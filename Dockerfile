@@ -4,20 +4,35 @@ MAINTAINER F4<contact@f4-group.com>
 ###Versions
 
 #from http://postgis.net/source
-ENV POSTGIS_MAJOR 2.1
-ENV POSTGIS_VERSION 2.1.7
-ENV POSTGIS http://download.osgeo.org/postgis/source/postgis-$POSTGIS_VERSION.tar.gz
+ENV POSTGIS_MAJOR 2.2
+ENV POSTGIS_VERSION 2.2.0dev
+#ENV POSTGIS http://download.osgeo.org/postgis/source/postgis-$POSTGIS_VERSION.tar.gz
+ENV POSTGIS http://postgis.net/stuff/postgis-2.2.0dev.tar.gz
 
+# Updated to newer geos
 #from http://trac.osgeo.org/geos/
-ENV GEOS http://download.osgeo.org/geos/geos-3.4.2.tar.bz2
+#ENV GEOS http://download.osgeo.org/geos/geos-3.4.2.tar.bz2
+ENV GEOS http://download.osgeo.org/geos/geos-3.5.0.tar.bz2
+
+# Did not update to newer gdal
 #from http://trac.osgeo.org/gdal/wiki/DownloadSource
 ENV GDAL http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz
+#ENV GDAL http://download.osgeo.org/gdal/1.11.3/gdal-1.11.3.tar.gz
+
+# Did not update to newer proj
 #from https://trac.osgeo.org/proj/
 ENV PROJ http://download.osgeo.org/proj/proj-4.9.1.tar.gz
+#ENV PROJ http://download.osgeo.org/proj/proj-4.9.2.tar.gz
+
+# Did not update to newer cgal
 #from https://gforge.inria.fr/frs/?group_id=52
 ENV CGAL https://gforge.inria.fr/frs/download.php/34705/CGAL-4.6.tar.xz
+#ENV CGAL https://gforge.inria.fr/frs/download.php/35139/CGAL-4.6.3.tar.xz
+
+# Updated to newer SFCGAL
 #from https://github.com/Oslandia/SFCGAL/releases
-ENV SFCGAL https://github.com/Oslandia/SFCGAL/archive/v1.1.0.tar.gz
+#ENV SFCGAL https://github.com/Oslandia/SFCGAL/archive/v1.1.0.tar.gz
+ENV SFCGAL https://github.com/Oslandia/SFCGAL/archive/v1.2.0.tar.gz
 
 #TODO make PROCESSOR_COUNT dynamic
 #built by docker.io, so reducing to 1. increase to match build server processor count as needed

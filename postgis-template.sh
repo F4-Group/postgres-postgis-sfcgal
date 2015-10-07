@@ -10,16 +10,18 @@ EOSQL
 
 #http://stackoverflow.com/questions/27547933/how-to-create-postgis-extension-for-postgresql-in-docker
 POSTGIS_CONFIG=/usr/share/postgresql/$PG_MAJOR/contrib/postgis-$POSTGIS_MAJOR
+POSTGIS_TOPOLOGY_CONFIG=/usr/share/postgresql/$PG_MAJOR/contrib/postgis_topology-$POSTGIS_MAJOR
+
 #postgres does not allow CREATE EXTENSION in single user mode
 gosu postgres postgres --single -j template_postgis < $POSTGIS_CONFIG/postgis.sql
-gosu postgres postgres --single -j template_postgis < $POSTGIS_CONFIG/topology.sql
+gosu postgres postgres --single -j template_postgis < $POSTGIS_TOPOLOGY_CONFIG/topology.sql
 gosu postgres postgres --single -j template_postgis < $POSTGIS_CONFIG/spatial_ref_sys.sql
 gosu postgres postgres --single -j template_postgis < $POSTGIS_CONFIG/rtpostgis.sql
 gosu postgres postgres --single -j template_postgis < $POSTGIS_CONFIG/sfcgal.sql
 
 #also enable it on given POSTGRES_DB (default to postgres)
 gosu postgres postgres --single -j $POSTGRES_DB < $POSTGIS_CONFIG/postgis.sql
-gosu postgres postgres --single -j $POSTGRES_DB < $POSTGIS_CONFIG/topology.sql
+gosu postgres postgres --single -j $POSTGRES_DB < $POSTGIS_TOPOLOGY_CONFIG/topology.sql
 gosu postgres postgres --single -j $POSTGRES_DB < $POSTGIS_CONFIG/spatial_ref_sys.sql
 gosu postgres postgres --single -j $POSTGRES_DB < $POSTGIS_CONFIG/rtpostgis.sql
 gosu postgres postgres --single -j $POSTGRES_DB < $POSTGIS_CONFIG/sfcgal.sql
